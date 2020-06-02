@@ -41,18 +41,27 @@ def is_valid_email_address(s):
     numOfAt = s.count('@') #count how many "@"
     if numOfAt != 1:
         return 1, "Must have exactly one @!"
-    l = s.split("@") #split string by @
-    preAt = l[0] # store the results in two strings
-    postAt = l[1]
+    l1 = s.split("@") #split string by @
+    preAt = l1[0] # store the results in two strings
+    postAt = l1[1]
     if len(preAt) < 3 or len(preAt > 16): #check if the length of the pre @ part is between 3 and 16
         return 2, "pre @ part must contain 3 - 16 alfanum chars"
-    elif preAt.isalnum() == False: # check if the preAt part is all alphabet and numbers
+    elif preAt.isalnum() == False: #even the length is legit, check if the preAt part is all alphabet and numbers
         return 3, "pre @ part must only contain alfanum chars"
     numOfDot = postAt.count(".")
     if numOfDot != 1: #check if the post @ part only have one dot
         return 4, "post @ part must have exactly one dot!"
-
-    else:
+    l2 = postAt.split('.') # split the post @ part by '.'
+    preDot = l2[0] #store the results in two strings
+    postDot = l2[1]
+    if len(preDot) < 2 or len(preDot) > 8: # check if the length of the predot part is between 2-8
+        return 5, "part after @ and before . must contain 2 - 8 alfanum chars"
+    elif preDot.isalnum() == False: # even the length is legit, check if the predot part is all alphabet and numbers
+        return 6, "part after @ and before . must only contain alfanum chars"
+    l3 = ["com", "edu", "org", "gov"] # make a list of the allowed postdot part
+    if postDot not in l3: # check if postdot part is one of the legit form in l3
+        return 7, "past-dot part invalid, must be from: com, edu, org, gov"
+    else: #if all the above conditions unsatisfied, there is no error, return code none
         return None, "Seems legit"
 
 # This if ensures that the following is NOT run if this file was imported as a module (which we'll do next!)
