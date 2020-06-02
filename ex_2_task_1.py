@@ -44,7 +44,7 @@ def is_valid_email_address(s):
     l1 = s.split("@") #split string by @
     preAt = l1[0] # store the results in two strings
     postAt = l1[1]
-    if len(preAt) < 3 or len(preAt > 16): #check if the length of the pre @ part is between 3 and 16
+    if len(preAt) < 3 or len(preAt) > 16: #check if the length of the pre @ part is between 3 and 16
         return 2, "pre @ part must contain 3 - 16 alfanum chars"
     elif preAt.isalnum() == False: #even the length is legit, check if the preAt part is all alphabet and numbers
         return 3, "pre @ part must only contain alfanum chars"
