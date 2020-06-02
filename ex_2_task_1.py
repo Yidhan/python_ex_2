@@ -37,19 +37,20 @@
 def is_valid_email_address(s):
     
     # your code here
-    numOfDot = s.count('.')
-    numOfAt = s.count('@')
+
+    numOfAt = s.count('@') #count how many "@"
     if numOfAt != 1:
         return 1, "Must have exactly one @!"
-    if numOfDot != 1:
-        return 4, "post @ part must have exactly one dot!"
-    l = s.split("@")
-    preAt = l[0]
+    l = s.split("@") #split string by @
+    preAt = l[0] # store the results in two strings
     postAt = l[1]
-    if len(preAt) < 3 or len(preAt > 16):
+    if len(preAt) < 3 or len(preAt > 16): #check if the length of the pre @ part is between 3 and 16
         return 2, "pre @ part must contain 3 - 16 alfanum chars"
-
-
+    elif preAt.isalnum() == False: # check if the preAt part is all alphabet and numbers
+        return 3, "pre @ part must only contain alfanum chars"
+    numOfDot = postAt.count(".")
+    if numOfDot != 1: #check if the post @ part only have one dot
+        return 4, "post @ part must have exactly one dot!"
 
     else:
         return None, "Seems legit"
