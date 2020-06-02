@@ -37,11 +37,22 @@
 def is_valid_email_address(s):
     
     # your code here
+    numOfDot = s.count('.')
+    numOfAt = s.count('@')
+    if numOfAt != 1:
+        return 1, "Must have exactly one @!"
+    if numOfDot != 1:
+        return 4, "post @ part must have exactly one dot!"
+    l = s.split("@")
+    preAt = l[0]
+    postAt = l[1]
+    if len(preAt) < 3 or len(preAt > 16):
+        return 2, "pre @ part must contain 3 - 16 alfanum chars"
 
-    
 
 
-    
+    else:
+        return None, "Seems legit"
 
 # This if ensures that the following is NOT run if this file was imported as a module (which we'll do next!)
 if __name__ == "__main__":
