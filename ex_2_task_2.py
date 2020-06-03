@@ -30,31 +30,32 @@
 
 # import your function from the previous .py file as a module (you can abbreviate it)
 # use ex_2_task_2 here instead once your function works!
-from ex_2_task_1_solution import is_valid_email_address as is_valid 
+from ex_2_task_1 import is_valid_email_address as is_valid
 
 gave_up = False
 attempts_left = 3
 
 # your code - start
 while True:
-    email = input("email address?")
-    r, err_str = is_valid(email)
+    email = input("email address?") # ask users to input email address
+    code, error = is_valid(email) #call is_valid with the input email and store the results in code and error
 
-    if r == None:
+    if code == None: #no error
         print(email, "is valid!")
-        break
+        break #bail out
     
     # error
-    attempts_left -= 1
+
+    attempts_left -= 1 #update the attempts_left
 
     # no attempts left - bail out 
     if attempts_left == 0:
-        gave_up = True
+        gave_up = True # set gave_up to true
         print("No attempts left, bailing out")
-        break
+        break #bail out
 
     print(email, "is invalid!")
-    print("Reason:", err_str)
+    print("Reason:", error) #print error message
     print(f"Try again, {attempts_left} attempts left")
 
 # your code - end
