@@ -55,8 +55,8 @@ while True:
         break #bail out
 
     print(email, "is invalid!")
-    print("Reason:", error) #print error message
-    print(f"Try again, {attempts_left} attempts left")
+    print("Reason:", error)  #print error message
+    print(f"Try again, {attempts_left} attempts left") # show how many attempts left
 
 # your code - end
 if not gave_up:
